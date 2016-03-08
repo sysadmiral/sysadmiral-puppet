@@ -1,0 +1,4 @@
+:hierarchy:
+  - "nodes/%{trusted.certname}"
+  - "environment/%{server_facts.environment}"
+  - common
