@@ -3,7 +3,7 @@
   - yaml
 :hierarchy:
   - "nodes/%{::hostname}"
-  - "environment/%{::environment}"
+  - "environments/%{::environment}"
   - common
 
 :yaml:
