@@ -1,6 +1,6 @@
 class profiles::personalcomputer {
 
-  include bash
+  #include bash
 
   package { 'pwgen':
     ensure => 'installed',
