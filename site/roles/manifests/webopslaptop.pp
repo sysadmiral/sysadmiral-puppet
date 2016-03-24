@@ -1,4 +1,3 @@
 class roles::webopslaptop {
-  include profiles::base
-  include profiles::personalcomputer
+  class { 'profiles::personalcomputer': }
 }

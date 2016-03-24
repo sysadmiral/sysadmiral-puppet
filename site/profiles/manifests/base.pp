@@ -1,4 +1,4 @@
 class profiles::base {
-  class { '::accounts::teams::webops': }
+  class { 'users::teams::webops': }
   class { '::ntp': }
 }
