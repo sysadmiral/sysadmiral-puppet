@@ -7,7 +7,7 @@ class users::teams::webops {
     password => '$6$l530cybVGX$fIfATux9OuSJ4ZkwDSC5GdWOnJ31CFiTDiz/lAWsxosZ2VMWc9tCtfyv5.V4SCDwUYPHoGgHi0PyJ4WPw42hy.',
     comment  => 'Amo Chumber',
   }
-  accounts::group { 'webops':
+  accounts::group { 'sudo, webops':
     gid => '20000',
   }
 }
