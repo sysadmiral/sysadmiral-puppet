@@ -6,5 +6,6 @@ mod 'puppetlabs/stdlib'
 # My Modules
 mod 'sysadmiral/accounts', 
   :git => 'https://github.com/sysadmiral/puppetlabs-accounts.git'
+  :branch => 'extendedclass'
 
 # Third Party Modules
