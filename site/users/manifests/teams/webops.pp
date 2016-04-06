@@ -1,5 +1,9 @@
 class users::teams::webops {
 
+  accounts::user { 'dummy':
+    ensure => 'absent',
+  }
+
   accounts::group { 'webops':
     gid => '20000',
   }
