@@ -5,7 +5,7 @@ class profiles::base::basepackages {
 
   #packages installed via installer
   $desiredpkgs = [ 'sudo' ]
-  package { $pkgs: }
+  package { $desiredpkgs: }
   
   #packages removed via installer
   $undesiredpkgs = []
