@@ -1,4 +1,4 @@
-class basepackages {
+class profiles::base::basepackages {
 
   #packages that are installed via a puppet module
   class { '::ntp': }
