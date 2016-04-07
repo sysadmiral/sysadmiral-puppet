@@ -1,6 +1,5 @@
 class profiles::personalcomputer {
 
-  package { 'pwgen':
-    ensure => 'installed',
-  }
+  class { 'profiles::base::personalcomputerpackages': }
+
 }
