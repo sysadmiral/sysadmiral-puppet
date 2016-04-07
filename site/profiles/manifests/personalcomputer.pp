@@ -1,5 +1,5 @@
 class profiles::personalcomputer {
 
-  class { 'profiles::base::personalcomputerpackages': }
+  class { 'profiles::personalcomputer::personalcomputerpackages': }
 
 }

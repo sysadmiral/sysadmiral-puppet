@@ -1,4 +1,4 @@
-class profiles::base::personalcomputerpackages {
+class profiles::personalcomputer::personalcomputerpackages {
 
   #packages that are installed via a puppet module
 
