@@ -4,17 +4,11 @@ class profiles::base::basepackages {
   class { '::ntp': }
 
   #packages installed via installer
-  class stuffWeWant {
-    $pkgs = [ 'sudo' ]
-    Package { ensure => 'installed' }
-    package { $pkgs: }
-  }
-
+  $desiredpkgs = [ 'sudo' ]
+  package { $pkgs: }
+  
   #packages removed via installer
-  class stuffWeDontWant {
-    $pkgs = []
-    Package { ensure => 'absent' }
-    package { $pkgs: }
-  }
+  $undesiredpkgs = []
+  package { $undesiredpkgs: ensure => 'absent' }
 
 }

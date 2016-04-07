@@ -3,17 +3,11 @@ class profiles::personalcomputer::personalcomputerpackages {
   #packages that are installed via a puppet module
 
   #packages installed via installer
-  class stuffWeWant {
-    $pkgs = [ 'pwgen', 'dos2unix' ]
-    Package { ensure => 'installed' }
-    package { $pkgs: }
-  }
+  $desiredpkgs = [ 'pwgen', 'dos2unix' ]
+  package { $desiredpkgs: ensure => 'installed' }
 
   #packages removed via installer
-  class stuffWeDontWant {
-    $pkgs = []
-    Package { ensure => 'absent' }
-    package { $pkgs: }
-  }
+  $undesiredpkgs = []
+  package { $undesiredpkgs: ensure => 'absent' }
 
 }
