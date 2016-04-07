@@ -6,4 +6,10 @@ class profiles::base {
       ensure => 'installed',
     }
   }
+
+  if $facts['osfamily'] == 'Redhat' {
+    class { '::epel':
+      stage => 'pre'
+    }
+  }
 }
