@@ -9,5 +9,8 @@ mod 'stahnma/epel', '1.2.2'
 mod 'sysadmiral/accounts', 
   :git => 'https://github.com/sysadmiral/puppetlabs-accounts.git',
   :branch => 'extendedclass'
+mod 'sysadmiral/perconarepo',
+  :git => 'https://github.com/sysadmiral/sysadmiral-puppet-perconarepo.git',
+  :tag => '1.0.0'
 
 # Third Party Modules
