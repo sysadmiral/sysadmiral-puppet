@@ -4,6 +4,7 @@ class profiles::base::basepackages {
   
   if $facts['osfamily'] == 'Redhat' {
     class { '::epel': stage => 'setup' }
+    class { '::perconarepo': stage => 'setup' }
   }
   
   class { '::ntp': }
