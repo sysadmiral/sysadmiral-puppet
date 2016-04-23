@@ -8,9 +8,14 @@ class profiles::base::basepackages {
   }
   
   class { '::ntp': }
+  class { '::sudo':
+    purge               => false,
+    config_file_replace => false,
+  }
+  
 
   #packages installed via installer
-  $desiredpkgs = [ 'sudo' ]
+  $desiredpkgs = []
   package { $desiredpkgs: }
   
   #packages removed via installer
