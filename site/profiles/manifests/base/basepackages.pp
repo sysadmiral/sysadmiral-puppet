@@ -1,19 +1,14 @@
 class profiles::base::basepackages {
 
   #packages that are installed via a puppet module
-  
   if $facts['osfamily'] == 'Redhat' {
     class { '::epel': stage => 'setup' }
     class { '::perconarepo': stage => 'setup' }
   }
   
   class { '::ntp': }
-  class { '::sudo':
-    purge               => false,
-    config_file_replace => false,
-  }
+  class { '::sudo': }
   
-
   #packages installed via installer
   $desiredpkgs = []
   package { $desiredpkgs: }
