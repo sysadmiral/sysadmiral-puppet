@@ -6,6 +6,7 @@ mod 'stahnma/epel', '1.2.2'
 mod 'sysadmiral/perconarepo'
 mod 'puppetlabs/apt', '2.2.2'
 #mod 'puppetlabs/accounts', '1.0.0'
+mod 'danzilio/virtualbox'
 
 # My Modules
 mod 'sysadmiral/accounts', 
