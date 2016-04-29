@@ -9,12 +9,14 @@ class profiles::personalcomputer::personalcomputerpackages {
   $desiredpkgs = [ 'pwgen', 'dos2unix', 'curl', 'git', 'nmap', 'subversion', 'tree', 'wget', 'whois', 'at', 'cinnamon', 'lightdm']
   package { $desiredpkgs: ensure => 'latest' }
 
-  $ospackages = $facts['osfamily'] ? {
-    Redhat  => [ 'yum-utils' ],
-    Debian  => [ 'apt-file' ],
-    default => ''
+  if $facts['osfamily'] == 'Redhat' {
+    $ospackages = [ 'yum-utils' ]
+    package { $ospackages: ensure => 'latest' }
   }
-  package { $ospackages: ensure => 'latest' }
+  elsif $facts['osfamily'] ==  'Debian' {
+    $ospackages = [ 'apt-file' ]
+    package { $ospackages: ensure => 'latest' }
+  }
 
   #packages removed via installer
   $undesiredpkgs = []
