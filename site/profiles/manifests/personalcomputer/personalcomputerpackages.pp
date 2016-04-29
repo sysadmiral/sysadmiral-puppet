@@ -3,7 +3,7 @@ class profiles::personalcomputer::personalcomputerpackages {
   #packages that are installed via a puppet module
 
   #packages installed via installer
-  $desiredpkgs = [ 'pwgen', 'dos2unix', 'curl', 'git', 'nmap', 'subversion', 'tree', 'wget', 'whois', 'at', 'cinnamon']
+  $desiredpkgs = [ 'pwgen', 'dos2unix', 'curl', 'git', 'nmap', 'subversion', 'tree', 'wget', 'whois', 'at', 'cinnamon', 'lightdm']
   package { $desiredpkgs: ensure => 'latest' }
 
   #packages removed via installer
