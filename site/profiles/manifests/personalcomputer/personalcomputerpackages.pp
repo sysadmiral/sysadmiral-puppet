@@ -6,7 +6,22 @@ class profiles::personalcomputer::personalcomputerpackages {
   }
 
   #packages installed via installer
-  $desiredpkgs = [ 'pwgen', 'dos2unix', 'curl', 'git', 'nmap', 'subversion', 'tree', 'wget', 'whois', 'at', 'cinnamon', 'lightdm']
+  $desiredpkgs = [
+    'at',
+    'cinnamon',
+    'clusterssh',
+    'curl',
+    'dos2unix',
+    'git',
+    'lightdm',
+    'mlocate',
+    'nmap',
+    'pwgen',
+    'subversion',
+    'tree',
+    'wget',
+    'whois'
+  ]
   package { $desiredpkgs: ensure => 'latest' }
 
   if $facts['osfamily'] == 'Redhat' {
