@@ -14,6 +14,7 @@ class profiles::personalcomputer::personalcomputerpackages {
     'dos2unix',
     'git',
     'gnome-terminal',
+    'jq',
     'lightdm',
     'meld',
     'mlocate',

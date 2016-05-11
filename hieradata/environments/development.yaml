@@ -3,4 +3,4 @@
 sudo::configs:
   'webops':
      'content'   : "%webops ALL=(ALL) NOPASSWD: ALL"
-     'priority'  : 1
+     'priority'  : 10
