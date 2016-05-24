@@ -8,6 +8,7 @@ class profiles::base::basepackages {
   
   class { '::ntp': }
   class { '::sudo': }
+  class { '::puppet_agent': }
   
   #packages installed via installer
   $desiredpkgs = []

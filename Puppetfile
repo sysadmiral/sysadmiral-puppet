@@ -7,6 +7,7 @@ mod 'sysadmiral/perconarepo'
 mod 'puppetlabs/apt', '2.2.2'
 #mod 'puppetlabs/accounts', '1.0.0'
 #mod 'danzilio/virtualbox'
+mod 'puppetlabs/puppet_agent'
 
 # My Modules
 mod 'sysadmiral/accounts', 
