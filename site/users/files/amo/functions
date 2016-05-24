@@ -24,5 +24,9 @@ server() {
 
 #set volume from command line
 __volume() {
-	amixer -D pulse sset Master $1%
+  if [ -z $1 ]; then
+    amixer -D pulse sget Master
+  else
+    amixer -D pulse sset Master $1%
+  fi
 }
