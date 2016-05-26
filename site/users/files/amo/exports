@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#more colours in terminal
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM='xterm-256color';
+fi;
+
+#<3 vim
+export EDITOR=/usr/bin/vim
+
+#history settings
+export HISTSIZE=1000000;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoreboth:erasedups;
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND";
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
+
+#golang exports
+if [ -f /usr/local/go/bin/go ]; then
+  export GOROOT=/usr/local/go
+  export PATH=$PATH:$GOROOT/bin
+else
+  echo "Go not installed at /usr/local/go/. Go check!"
+fi
+
+if [ -d "$HOME/golang" ]; then
+  if [ -z "$GOPATH" ]; then
+    export GOPATH=$HOME/golang
+    else
+    export GOPATH=$GOPATH:$HOME/golang
+    fi
+else
+  echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
+fi
+
+#haskell/cabal exports
+if [ -d "$HOME/.cabal/bin" ]; then
+  export PATH=$PATH:/home/amo/.cabal/bin
+fi
+ 
