@@ -14,8 +14,8 @@ function ctrl_c() {
 
 lockfile=/var/lock/sysadmiral.lock
 bootstrap_file=/root/.sysadmiral.bootstrap
-my_puppet_conf_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/master/puppet.conf"
-my_r10k_yaml_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/master/r10k.yaml"
+my_puppet_conf_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/production/bootstrap/puppet.conf"
+my_r10k_yaml_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/production/bootstrap/r10k.yaml"
 pre_req_pkgs="ca-certificates git"
 internet_check_URL="www.google.com" # make this changeable just in case google goes down!
 
