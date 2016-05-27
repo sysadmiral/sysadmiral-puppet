@@ -10,7 +10,7 @@ class profiles::base::basepackages {
   class { '::sudo': }
   
   #packages installed via installer
-  $desiredpkgs = []
+  $desiredpkgs = [ mosh ]
   package { $desiredpkgs: }
   
   #packages removed via installer
