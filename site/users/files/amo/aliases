@@ -22,6 +22,12 @@ alias volume='__volume "$1"'
 #start http server in current dir
 alias server='__server'
 
+#lazy cd'ing
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+#prefer mosh
+if [[ -f $(which mosh) ]]; then
+  alias ssh=$(which mosh)
+fi
