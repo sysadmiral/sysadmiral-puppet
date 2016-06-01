@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
 # Shell script for bootstrapping a new laptop
 ###
+
+set -e
 
 # trap ctrl-c and call ctrl_c()
 trap ctrl_c INT
@@ -14,8 +16,8 @@ function ctrl_c() {
 
 lockfile=/var/lock/sysadmiral.lock
 bootstrap_file=/root/.sysadmiral.bootstrap
-my_puppet_conf_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/master/puppet.conf"
-my_r10k_yaml_location="https://raw.githubusercontent.com/sysadmiral-puppet-control/master/r10k.yaml"
+my_puppet_conf_location="https://raw.githubusercontent.com/sysadmiral/sysadmiral-puppet-control/production/bootstrap/puppet.conf"
+my_r10k_yaml_location="https://raw.githubusercontent.com/sysadmiral/sysadmiral-puppet-control/production/bootstrap/r10k.yaml"
 pre_req_pkgs="ca-certificates git"
 internet_check_URL="www.google.com" # make this changeable just in case google goes down!
 
@@ -116,10 +118,13 @@ internet_check ()
   fi
 }
 
-instal_pre_reqs ()
+install_pre_reqs ()
 {
   echo "Installing required packages. Please wait..."
   ${installer} ${installer_opts} ${pre_req_pkgs}
+  if [[ $my_os_type == "centos" ]]; then
+    ${installer} -q -y groupinstall "X Window system"
+  fi
   echo "Required packages installed"
 }
 
@@ -134,7 +139,7 @@ get_env ()
 install_puppet ()
 {
   echo "Installing puppet repo and puppet-agent"
-  ${fetcher} ${fetcher_opts} ${puppet_repo}${puppet_repo_pkg}
+  ${fetcher} ${fetcher_opts} ${puppet_repo}${puppet_repo_pkg} > /tmp/${puppet_repo_pkg}
   ${pkg_installer} ${pkg_installer_opts} /tmp/${puppet_repo_pkg}
   ${installer} update -y && ${installer} install -y puppet-agent
   ${fetcher} ${fetcher_opts} ${my_puppet_conf_location} > /etc/puppetlabs/puppet/puppet.conf
@@ -145,10 +150,18 @@ install_puppet ()
 install_R10K ()
 {
   echo "Installing r10k"
-  ${puppet_bin_dir}gem install r10k
+  ${puppet_bin_dir}gem install --no-rdoc --no-ri r10k
   mkdir /etc/puppetlabs/r10k
   ${fetcher} ${fetcher_opts} ${my_r10k_yaml_location} > /etc/puppetlabs/r10k/r10k.yaml
   echo "r10k installed and config file created"
+}
+
+post_install() {
+  if [[ $my_os_type == "centos" ]]; then
+    systemctl set-default graphical.target
+    rm -f /etc/systemd/system/default.target
+    ln -s '/usr/lib/systemd/system/graphical.target' '/etc/systemd/system/default.target'
+  fi
 }
 
 bootstrap ()
@@ -167,9 +180,10 @@ are_we_root
 are_we_bootstrapped
 get_vars
 internet_check
-instal_pre_reqs
+install_pre_reqs
 get_env
 install_puppet
 install_R10K
+post_install
 bootstrap
 youve_been_bootstrapped
