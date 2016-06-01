@@ -8,6 +8,7 @@ class profiles::personalcomputer::personalcomputerpackages {
   #packages installed via installer
   $desiredpkgs = [
     'at',
+    'alsa-utils',
     'cinnamon',
     'clusterssh',
     'curl',
