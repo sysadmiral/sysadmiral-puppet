@@ -3,7 +3,7 @@
 :sources:
   :sysadmiral:
     remote: 'https://github.com/sysadmiral/sysadmiral-puppet-control.git'
-    basedir: 'etc/puppetlabs/code/environments'
+    basedir: '/etc/puppetlabs/code/environments'
 
 :git:
   provider: 'shellgit'
