@@ -159,6 +159,8 @@ install_R10K ()
 post_install() {
   if [[ $my_os_type == "centos" ]]; then
     systemctl set-default graphical.target
+    rm -f /etc/systemd/system/default.target
+    ln -s '/usr/lib/systemd/system/graphical.target' '/etc/systemd/system/default.target'
   fi
 }
 
