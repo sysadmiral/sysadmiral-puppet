@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
 # Shell script for bootstrapping a new laptop
 ###
+
+set -e
 
 # trap ctrl-c and call ctrl_c()
 trap ctrl_c INT
@@ -120,6 +122,9 @@ instal_pre_reqs ()
 {
   echo "Installing required packages. Please wait..."
   ${installer} ${installer_opts} ${pre_req_pkgs}
+  if [[ $my_os_type == "centos" ]]; then
+    ${installer} -qy groupinstall "X Window system"
+  fi
   echo "Required packages installed"
 }
 
