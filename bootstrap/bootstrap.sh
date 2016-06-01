@@ -118,12 +118,12 @@ internet_check ()
   fi
 }
 
-instal_pre_reqs ()
+install_pre_reqs ()
 {
   echo "Installing required packages. Please wait..."
   ${installer} ${installer_opts} ${pre_req_pkgs}
   if [[ $my_os_type == "centos" ]]; then
-    ${installer} -qy groupinstall "X Window system"
+    ${installer} -q -y groupinstall "X Window system"
   fi
   echo "Required packages installed"
 }
@@ -150,10 +150,16 @@ install_puppet ()
 install_R10K ()
 {
   echo "Installing r10k"
-  ${puppet_bin_dir}gem install r10k
+  ${puppet_bin_dir}gem install --no-rdoc --no-ri r10k
   mkdir /etc/puppetlabs/r10k
   ${fetcher} ${fetcher_opts} ${my_r10k_yaml_location} > /etc/puppetlabs/r10k/r10k.yaml
   echo "r10k installed and config file created"
+}
+
+post_install() {
+  if [[ $my_os_type == "centos" ]]; then
+    systemctl set-default graphical.target
+  fi
 }
 
 bootstrap ()
@@ -172,9 +178,10 @@ are_we_root
 are_we_bootstrapped
 get_vars
 internet_check
-instal_pre_reqs
+install_pre_reqs
 get_env
 install_puppet
 install_R10K
+post_install
 bootstrap
 youve_been_bootstrapped
