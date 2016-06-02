@@ -3,6 +3,11 @@
 
 class profiles::personalcomputer::personalcomputerrepos {
   if $facts['osfamily'] == 'Redhat' {
-    class { '::perconarepo': stage => 'setup' }
+    class { '::perconarepo':
+      stage                           => 'setup',
+      perconareleasebasearch_enabled  => '0',
+      perconareleasenoarch_enabled    => '0',
+      perconareleasesource_enabled    => '0'
+    }
   }
 }
