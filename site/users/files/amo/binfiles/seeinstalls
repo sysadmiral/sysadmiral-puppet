@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# List packages that were not in the base install
+# Author: Amo Chumber - @sysadmiral
+# Copyright (C) Amo Chumber - All Rights Reserved
+# Permission to copy and modify is granted under the MIT license
+
+TMPFILE="/tmp/seeinstalls.tmp"
+
+function get_initial_installs {
+zgrep '^Package:' /var/log/installer/initial-status.gz | awk '{ print $2}' > $TMPFILE
+}
+
+function diff_lists {
+aptitude search -F %p '~i!~M' | awk '{ print $1}' | grep -v -F -f $TMPFILE
+}
+
+function clean_up {
+rm $TMPFILE
+}
+
+get_initial_installs
+diff_lists
+clean_up
