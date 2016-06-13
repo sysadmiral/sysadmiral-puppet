@@ -5,6 +5,8 @@ class profiles::personalcomputer::personalcomputerpackages {
     manage_ext_repo => false
   }
 
+  class {'docker': }
+
   #packages installed via installer
   $desiredpkgs = [
     'at',
