@@ -1,6 +1,6 @@
 # Hiera data specific to the localdev environment
 
 sudo::configs:
-    'webops':
-        'content'   : "%webops ALL=(ALL) NOPASSWD: ALL"
-        'priority'  : 10
+  'webops':
+    'content'   : "%webops ALL=NOPASSWD:ALL"
+    'priority'  : 10

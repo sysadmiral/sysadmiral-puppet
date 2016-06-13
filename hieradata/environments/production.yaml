@@ -1,3 +1,6 @@
 # Hiera data specific to the production environment
 
-
+sudo::configs:
+  'webops':
+    'content'   : "%webops ALL=ALL"
+    'priority'  : 10
