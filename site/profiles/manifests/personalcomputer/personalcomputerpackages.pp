@@ -6,7 +6,8 @@ class profiles::personalcomputer::personalcomputerpackages {
   }
 
   class {'docker': 
-    docker_users =>  [ 'amo' ]
+    docker_users => [ 'amo' ],
+    create_user  => false
   }
 
   #packages installed via installer
