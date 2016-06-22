@@ -19,7 +19,7 @@ class profiles::personalcomputer::personalcomputerpackages {
     'curl',
     $dconf = $facts['osfamily'] ? {
       'Debian' => 'dconf-cli',
-      'Redhat' => 'dconf'
+      'Redhat' => 'dconf',
       default  => undef
     },
     'dos2unix',
