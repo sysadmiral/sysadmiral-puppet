@@ -17,6 +17,11 @@ class profiles::personalcomputer::personalcomputerpackages {
     'cinnamon',
     'clusterssh',
     'curl',
+    $dconf = $facts['osfamily'] ? {
+      'Debian' => 'dconf-cli',
+      'Redhat' => 'dconf'
+      default  => undef
+    },
     'dos2unix',
     'git',
     'gnome-terminal',
@@ -25,6 +30,11 @@ class profiles::personalcomputer::personalcomputerpackages {
     'meld',
     'mlocate',
     'nmap',
+    $packageproviderutils = $facts['osfamily'] ? {
+      'Debian' => 'apt-file',
+      'Redhat' => 'yum-utils',
+      default  => undef
+    },
     'pwgen',
     'subversion',
     'tree',
@@ -32,15 +42,6 @@ class profiles::personalcomputer::personalcomputerpackages {
     'whois'
   ]
   package { $desiredpkgs: ensure => 'latest' }
-
-  if $facts['osfamily'] == 'Redhat' {
-    $ospackages = [ 'yum-utils' ]
-    package { $ospackages: ensure => 'latest' }
-  }
-  elsif $facts['osfamily'] ==  'Debian' {
-    $ospackages = [ 'apt-file' ]
-    package { $ospackages: ensure => 'latest' }
-  }
 
   #packages removed via installer
   $undesiredpkgs = []

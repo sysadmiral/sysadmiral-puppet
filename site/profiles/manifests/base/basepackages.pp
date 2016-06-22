@@ -6,7 +6,7 @@ class profiles::base::basepackages {
 
   #packages installed via installer
   $desiredpkgs = [ mosh ]
-  package { $desiredpkgs: }
+  package { $desiredpkgs: ensure => latest }
 
   #packages removed via installer
   $undesiredpkgs = []
