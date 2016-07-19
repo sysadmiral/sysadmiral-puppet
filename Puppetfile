@@ -7,13 +7,11 @@ mod 'sysadmiral/perconarepo'
 mod 'puppetlabs/apt', '2.2.2'
 mod 'garethr/docker', '5.2.0'
 #mod 'puppetlabs/accounts', '1.0.0'
-#mod 'danzilio/virtualbox'
+mod 'danzilio/virtualbox', '1.7.1'
 
 # My Modules
 mod 'sysadmiral/accounts', 
   :git => 'https://github.com/sysadmiral/puppetlabs-accounts.git',
   :branch => 'extendedclass'
-mod 'sysadmiral/virtualbox',
-  :git => 'https://github.com/sysadmiral/sysadmiral-puppet-virtualbox.git'
 
 # Third Party Modules
