@@ -1,5 +1,5 @@
 # Forge Modules
-mod 'puppetlabs/ntp', '4.1.0'
+mod 'puppetlabs/ntp', '4.2.0'
 mod 'puppetlabs/stdlib'
 mod 'saz/sudo', '3.1.0'
 mod 'stahnma/epel', '1.2.2'
