@@ -1,6 +1,1 @@
 # Hiera data specific to the development environment
-
-sudo::configs:
-  'webops':
-    'content'   : "%webops ALL=NOPASSWD:ALL"
-    'priority'  : 10

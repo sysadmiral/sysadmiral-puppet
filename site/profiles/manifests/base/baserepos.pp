@@ -2,7 +2,7 @@
 # install repos e.g. perconarepo
 
 class profiles::base::baserepos {
-  if $facts['osfamily'] == 'Redhat' {
+  if $::facts['os']['family'] == 'Redhat' {
     class { '::epel': stage => 'setup' }
   }
 }
